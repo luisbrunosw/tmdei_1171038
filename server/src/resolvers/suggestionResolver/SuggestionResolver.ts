@@ -1,8 +1,8 @@
 import { Arg, Mutation, Query, Resolver } from "type-graphql";
 
 import { Suggestion } from "../../entity/Suggestions";
-import { CreateSuggInput } from "./createSuggInput";
-import { CreateSuggResponse } from "./createSuggResponse";
+import { CreateSuggestionInput } from "./createSuggestionInput";
+import { CreateSuggestionResponse } from "./createSuggestionResponse";
 
 @Resolver()
 export class Suggestionsolver {
@@ -21,10 +21,10 @@ export class Suggestionsolver {
     return suggestions;
   }
 
-  @Mutation(() => CreateSuggResponse)
+  @Mutation(() => CreateSuggestionResponse)
   async createSuggugestion(
-    @Arg("input") { body, tag }: CreateSuggInput
-  ): Promise<CreateSuggResponse> {
+    @Arg("input") { body, tag }: CreateSuggestionInput
+  ): Promise<CreateSuggestionResponse> {
     const suggestion = await Suggestion.create({
       body,
       tag,

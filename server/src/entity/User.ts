@@ -6,35 +6,29 @@ import {
   CreateDateColumn,
   UpdateDateColumn,
   OneToMany,
-  JoinColumn,
-  OneToOne,
 } from "typeorm";
 import { Field, ID, ObjectType } from "type-graphql";
 import { Comment } from "./Comment";
-import { User } from "./User";
+import { Post } from "./Post";
 
 @ObjectType()
-@Entity("posts")
-export class Post extends BaseEntity {
+@Entity("users")
+export class User extends BaseEntity {
   @Field(() => ID)
   @PrimaryGeneratedColumn("uuid")
   id: string;
 
-  @OneToOne(() => User, (user) => user.id)
-  @JoinColumn({ name: "userId" })
-  author: User;
-
-  @Field()
-  @Column({ type: "varchar" })
-  title: string;
-
-  @Field()
-  @Column({ type: "text" })
-  body: string;
+  @Field(() => String, { nullable: true })
+  @Column({ type: "varchar", nullable: true })
+  name: string;
 
   @Field(() => [Comment], {nullable: "items"})
-  @OneToMany(() => Comment, (comment) => comment.post)
+  @OneToMany(() => Comment, (comment) => comment.author)
   comments: Comment[];
+
+  @Field(() => [Post], {nullable: "items"})
+  @OneToMany(() => Post, (post) => post.author)
+  posts: Post[];
 
   @Field()
   @CreateDateColumn()

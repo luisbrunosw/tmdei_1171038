@@ -1,10 +1,13 @@
 import { Field, InputType } from "type-graphql";
 
 @InputType()
-export class CreateSuggInput {
+export class CreateAnnouncementInput {
+  @Field()
+  author: string;
+
   @Field()
   body: string;
 
   @Field()
-  tag: string;
+  summary: string;
 }

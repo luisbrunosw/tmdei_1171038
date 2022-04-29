@@ -1,11 +1,11 @@
 import { Arg, Mutation, Query, Resolver } from "type-graphql";
 
 import { Announcement } from "../../entity/Announcement";
-import { CreateAnnInput } from "./createAnnInput";
-import { CreateAnnResponse } from "./createAnnResponse";
+import { CreateAnnouncementInput } from "./createAnnouncementInput";
+import { CreateAnnouncementResponse } from "./createAnnouncementResponse";
 
 @Resolver()
-export class AnnResolver {
+export class AnnouncementResolver {
   @Query(() => [Announcement])
   async announcements(): Promise<Announcement[]> {
     const anns = await Announcement.find();
@@ -20,10 +20,10 @@ export class AnnResolver {
     return ann;
   }
 
-  @Mutation(() => CreateAnnResponse)
+  @Mutation(() => CreateAnnouncementResponse)
   async createAnnouncement(
-    @Arg("input") { author, body, summary }: CreateAnnInput
-  ): Promise<CreateAnnResponse> {
+    @Arg("input") { author, body, summary }: CreateAnnouncementInput
+  ): Promise<CreateAnnouncementResponse> {
     const announcement = await Announcement.create({
       author,
       body,

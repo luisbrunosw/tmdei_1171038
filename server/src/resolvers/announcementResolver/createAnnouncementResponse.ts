@@ -3,7 +3,7 @@ import { Field, ObjectType } from "type-graphql";
 import { Announcement } from "../../entity/Announcement";
 
 @ObjectType()
-export class CreateAnnResponse {
+export class CreateAnnouncementResponse {
   @Field()
   ok: Boolean;
 

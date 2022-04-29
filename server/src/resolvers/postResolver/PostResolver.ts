@@ -1,15 +1,26 @@
-import { Arg, Mutation, Query, Resolver } from "type-graphql";
+import { Arg, FieldResolver, Mutation, Query, Resolver, Root } from "type-graphql";
 
 import { Post } from "../../entity/Post";
+import { Comment } from "../../entity/Comment";
+import { User } from "../../entity/User";
 import { CreatePostInput } from "./createPostInput";
 import { CreatePostResponse } from "./createPostResponse";
 
-@Resolver()
+@Resolver(() => Post)
 export class PostResolver {
   @Query(() => [Post])
-  async posts(): Promise<Post[]> {
-    const posts = await Post.find({ order: { createdAt: "DESC" } });
-    return posts;
+ async posts(): Promise<Post[]> {
+    return await Post.find({ order: { createdAt: "DESC" } })
+  }
+
+  @FieldResolver(() => [Comment])
+  async comments(@Root() post: Post): Promise<Comment[]> {
+    return await Comment.find({ where: {post: post.id}, order: { createdAt: "DESC" } })
+  }
+
+  @FieldResolver(() => User)
+  async author(@Root() post: Post): Promise<User> {
+    return await User.findOneOrFail({ where: {id: post.author}, order: { createdAt: "DESC" } })
   }
 
   @Query(() => Post)
@@ -22,8 +33,10 @@ export class PostResolver {
   async createPost(
     @Arg("input") { author, body, title }: CreatePostInput
   ): Promise<CreatePostResponse> {
+    const user = await User.findOneOrFail({where: {id: author}});
+
     const post = await Post.create({
-      author,
+      author: user,
       title,
       body,
     }).save();

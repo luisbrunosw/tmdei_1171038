@@ -1,15 +1,35 @@
 import { Arg, Mutation, Query, Resolver } from "type-graphql";
 
-import { Trend } from "../entity/Trend";
-import { View } from "../entity/View";
+import { Trend } from "../../entity/Trend";
+import { View } from "../../entity/View";
 
 @Resolver()
 export class TrendResolver {
   @Query(() => [Trend])
-  async trends(): Promise<Trend[]> {
-    const trends = await Trend.find();
-    return trends;
-  }
+  async trends(
+    @Arg("source", { nullable: true }) source: string,
+    @Arg("sourceUrl", { nullable: true }) sourceUrl: string,
+    @Arg("imageUrl", { nullable: true }) imageUrl: string,
+    @Arg("body", { nullable: true }) body: string
+  ): Promise<Trend[]> {
+  const query = this.formatQuery({
+    source,
+    sourceUrl,
+    imageUrl,
+    body
+   });
+
+  return await Trend.find(query);
+}
+
+formatQuery(obj: any): any {
+  Object.keys(obj).forEach(key => {
+    if (!obj[key]) {
+      delete obj[key];
+    }
+  });
+  return {where: obj};
+}
 
   @Query(() => [Trend])
   async newTrends(): Promise<Trend[]> {
