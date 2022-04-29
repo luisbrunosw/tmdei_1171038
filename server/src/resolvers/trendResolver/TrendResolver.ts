@@ -1,3 +1,4 @@
+import { formatQuery } from "../../utils/Utils";
 import { Arg, Mutation, Query, Resolver } from "type-graphql";
 
 import { Trend } from "../../entity/Trend";
@@ -12,7 +13,7 @@ export class TrendResolver {
     @Arg("imageUrl", { nullable: true }) imageUrl: string,
     @Arg("body", { nullable: true }) body: string
   ): Promise<Trend[]> {
-  const query = this.formatQuery({
+  const query = formatQuery({
     source,
     sourceUrl,
     imageUrl,
@@ -20,15 +21,6 @@ export class TrendResolver {
    });
 
   return await Trend.find(query);
-}
-
-formatQuery(obj: any): any {
-  Object.keys(obj).forEach(key => {
-    if (!obj[key]) {
-      delete obj[key];
-    }
-  });
-  return {where: obj};
 }
 
   @Query(() => [Trend])

@@ -8,7 +8,6 @@ import {
     ManyToOne,
     JoinColumn,
     OneToMany,
-    OneToOne,
   } from "typeorm";
   import { Field, ID, ObjectType } from "type-graphql";
 import { Post } from "./Post";
@@ -18,13 +17,12 @@ import { User } from "./User";
   @Entity("comments")
   export class Comment extends BaseEntity {
     @Field(() => ID)
-    @ManyToOne(() => Comment, (comment) => comment.comments)
     @PrimaryGeneratedColumn("uuid")
     id: string;
   
-    @OneToOne(() => User, (user) => user.id)
+    @ManyToOne(() => User, (user) => user.id)
     @JoinColumn({ name: "userId" })
-    author: User;
+    author: string;
   
     @Field()
     @Column({ type: "varchar" })
@@ -36,10 +34,15 @@ import { User } from "./User";
 
     @ManyToOne(() => Post, (post) => post.comments)
     @JoinColumn({ name: "postId" })
-    post: Post;
+    post: string;
 
+    @Field(() => [Comment], {nullable: "items"})
     @OneToMany(() => Comment, (comment) => comment.id)
-    comments: Comment[];
+    answers: Comment[];
+    
+    @ManyToOne(() => Comment, (comment) => comment.answers)
+    @JoinColumn({ name: "threadId" })
+    thread: string;
   
     @Field()
     @CreateDateColumn()

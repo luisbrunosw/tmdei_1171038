@@ -24,12 +24,12 @@ export class UserResolver {
   }
 
   @Query(() => User)
-  async post(@Arg("userId") id: string): Promise<User | undefined> {
+  async user(@Arg("userId") id: string): Promise<User | undefined> {
     return await User.findOne(id);
   }
 
   @Mutation(() => CreateUserResponse)
-  async createPost(
+  async createUser(
     @Arg("input") { name }: CreateUserInput
   ): Promise<CreateUserResponse> {
     const user = await User.create({
@@ -43,7 +43,7 @@ export class UserResolver {
   }
 
   @Mutation(() => Boolean)
-  async deletePost(@Arg("userId") id: string): Promise<Boolean> {
+  async deleteUser(@Arg("userId") id: string): Promise<Boolean> {
     try {
       await User.delete({ id });
     } catch (err) {

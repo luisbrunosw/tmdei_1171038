@@ -7,7 +7,7 @@ import {
   UpdateDateColumn,
   OneToMany,
   JoinColumn,
-  OneToOne,
+  ManyToOne,
 } from "typeorm";
 import { Field, ID, ObjectType } from "type-graphql";
 import { Comment } from "./Comment";
@@ -20,9 +20,9 @@ export class Post extends BaseEntity {
   @PrimaryGeneratedColumn("uuid")
   id: string;
 
-  @OneToOne(() => User, (user) => user.id)
+  @ManyToOne(() => User, (user) => user.id)
   @JoinColumn({ name: "userId" })
-  author: User;
+  author: string;
 
   @Field()
   @Column({ type: "varchar" })

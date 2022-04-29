@@ -2,6 +2,7 @@ import { Arg, FieldResolver, Mutation, Query, Resolver, Root } from "type-graphq
 
 import { Comment } from "../../entity/Comment";
 import { User } from "../../entity/User";
+import { Post } from "../../entity/Post";
 import { CreateCommentInput } from "./CreateCommentInput";
 import { CreateCommentResponse } from "./CreateCommentResponse";
 
@@ -12,29 +13,41 @@ export class CommentResolver {
     return await Comment.find({ order: { createdAt: "DESC" } });
   }
   
-  /*@FieldResolver(() => [Comment])
-  async comments(@Root() post: Post): Promise<Comment[]> {
-    return await Comment.find({ where: {post: post.id}, order: { createdAt: "DESC" } })
-  }*/
+  @FieldResolver(() => [Comment])
+  async answers(@Root() comment: Comment): Promise<Comment[]> {
+    return await Comment.find({ where: {thread: comment.id}, order: { createdAt: "DESC" } })
+  }
+  
+  @FieldResolver(() => Comment)
+  async thread(@Root() comment: Comment): Promise<Comment> {
+    return await Comment.findOneOrFail(comment.id)
+  }
 
   @FieldResolver(() => User)
   async author(@Root() comment: Comment): Promise<User> {
-    return await User.findOneOrFail({ where: {id: comment.author}, order: { createdAt: "DESC" } })
+    return await User.findOneOrFail(comment.author)
+  }
+
+  @FieldResolver(() => Post)
+  async post(@Root() comment: Comment): Promise<Post> {
+    return await Post.findOneOrFail(comment.post)
   }
 
   @Query(() => Comment)
-  async post(@Arg("commentId") id: string): Promise<Comment | undefined> {
+  async comment(@Arg("commentId") id: string): Promise<Comment | undefined> {
     return await Comment.findOne(id);
   }
 
   @Mutation(() => CreateCommentResponse)
   async createComment(
-    @Arg("input") { author, body, title }: CreateCommentInput
+    @Arg("input") { author, body, title, post, thread }: CreateCommentInput
   ): Promise<CreateCommentResponse> {
-    const user = await User.findOneOrFail({where: {id: author}});
+    const user = await User.findOneOrFail(author);
+    const postOrThread = await this.getPostOrThread(post, thread);
 
     const comment = await Comment.create({
-      author: user,
+      ...postOrThread,
+      author: user.id,
       title,
       body,
     }).save();
@@ -43,6 +56,20 @@ export class CommentResolver {
       ok: true,
       comment,
     };
+  }
+
+  async getPostOrThread(post: string, thread: string) { 
+    if(thread){
+       const threadObj = await Comment.findOneOrFail(thread);
+       return {
+           thread: threadObj.id
+       }
+    }
+
+    const postObj = await Post.findOneOrFail(post);
+    return {
+        post: postObj.id
+    }
   }
 
   @Mutation(() => Boolean)

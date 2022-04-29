@@ -20,7 +20,7 @@ export class PostResolver {
 
   @FieldResolver(() => User)
   async author(@Root() post: Post): Promise<User> {
-    return await User.findOneOrFail({ where: {id: post.author}, order: { createdAt: "DESC" } })
+    return await User.findOneOrFail(post.author)
   }
 
   @Query(() => Post)
@@ -33,10 +33,10 @@ export class PostResolver {
   async createPost(
     @Arg("input") { author, body, title }: CreatePostInput
   ): Promise<CreatePostResponse> {
-    const user = await User.findOneOrFail({where: {id: author}});
+    const user = await User.findOneOrFail(author);
 
     const post = await Post.create({
-      author: user,
+      author: user.id,
       title,
       body,
     }).save();
