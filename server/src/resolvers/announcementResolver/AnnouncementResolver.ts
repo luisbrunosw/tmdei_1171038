@@ -1,15 +1,21 @@
-import { Arg, Mutation, Query, Resolver } from "type-graphql";
+import { Arg, FieldResolver, Mutation, Query, Resolver, Root } from "type-graphql";
 
 import { Announcement } from "../../entity/Announcement";
+import { User } from "../../entity/User";
 import { CreateAnnouncementInput } from "./createAnnouncementInput";
 import { CreateAnnouncementResponse } from "./createAnnouncementResponse";
 
-@Resolver()
+@Resolver(() => Announcement)
 export class AnnouncementResolver {
   @Query(() => [Announcement])
   async announcements(): Promise<Announcement[]> {
     const anns = await Announcement.find();
     return anns;
+  }
+
+  @FieldResolver(() => User)
+  async author(@Root() announcement: Announcement): Promise<User> {
+    return await User.findOneOrFail(announcement.author)
   }
 
   @Query(() => Announcement)
@@ -24,8 +30,10 @@ export class AnnouncementResolver {
   async createAnnouncement(
     @Arg("input") { author, body, summary }: CreateAnnouncementInput
   ): Promise<CreateAnnouncementResponse> {
+    const user = await User.findOneOrFail(author);
+    
     const announcement = await Announcement.create({
-      author,
+      author: user.id,
       body,
       summary,
     }).save();

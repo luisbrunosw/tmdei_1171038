@@ -7,7 +7,7 @@ import { CreateViewInput } from "./CreateViewInput";
 import { CreateViewResponse } from "./CreateViewResponse";
 
 @Resolver(() => View)
-export class TrendResolver {
+export class ViewResolver {
   @Query(() => String)
   async views(@Arg("trendId") id: string) {
     return await View.count({ where: { trendId: id } });

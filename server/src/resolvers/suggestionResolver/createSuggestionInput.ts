@@ -7,4 +7,7 @@ export class CreateSuggestionInput {
 
   @Field()
   tag: string;
+
+  @Field()
+  author: string;
 }

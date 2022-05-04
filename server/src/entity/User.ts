@@ -11,6 +11,8 @@ import { Field, ID, ObjectType } from "type-graphql";
 import { Comment } from "./Comment";
 import { Post } from "./Post";
 import { View } from "./View";
+import { Announcement } from "./Announcement";
+import { Suggestion } from "./Suggestion";
 
 @ObjectType()
 @Entity("users")
@@ -34,6 +36,14 @@ export class User extends BaseEntity {
   @Field(() => [View], {nullable: "items"})
   @OneToMany(() => View, (view) => view.author)
   views: View[];
+
+  @Field(() => [Announcement], {nullable: "items"})
+  @OneToMany(() => Announcement, (announcement) => announcement.author)
+  announcements: Announcement[];
+
+  @Field(() => [Suggestion], {nullable: "items"})
+  @OneToMany(() => Suggestion, (suggestion) => suggestion.author)
+  suggestions: Suggestion[];
 
   @Field()
   @CreateDateColumn()

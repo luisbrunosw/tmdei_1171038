@@ -16,6 +16,7 @@ import { AnnouncementResolver } from "./resolvers/announcementResolver/Announcem
 import { Suggestionsolver } from "./resolvers/suggestionResolver/SuggestionResolver";
 import { HelloResolver } from "./resolvers/hello";
 import { TrendResolver } from "./resolvers/trendResolver/TrendResolver";
+import { ViewResolver } from "./resolvers/viewResolver/ViewResolver";
 
 const main = async () => {
   await createConnection({
@@ -48,6 +49,7 @@ const main = async () => {
         Suggestionsolver,
         HelloResolver,
         TrendResolver,
+        ViewResolver,
       ],
       validate: false,
     }),
