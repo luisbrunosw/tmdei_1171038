@@ -29,6 +29,7 @@ export class Trend extends BaseEntity {
   @Column({ type: "text", nullable: true })
   imageUrl: string;
 
+  @Field(() => [View], {nullable: "items"})
   @OneToMany(() => View, (view) => view.trend)
   views: View[];
 

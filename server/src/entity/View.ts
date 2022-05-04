@@ -2,7 +2,6 @@ import {
   Entity,
   BaseEntity,
   PrimaryGeneratedColumn,
-  Column,
   CreateDateColumn,
   UpdateDateColumn,
   ManyToOne,
@@ -10,6 +9,7 @@ import {
 } from "typeorm";
 import { Field, ID, ObjectType } from "type-graphql";
 import { Trend } from "./Trend";
+import { User } from "./User";
 
 @ObjectType()
 @Entity("views")
@@ -18,13 +18,13 @@ export class View extends BaseEntity {
   @PrimaryGeneratedColumn("uuid")
   id: string;
 
-  @Field(() => ID)
-  @Column()
-  trendId: string;
-
   @ManyToOne(() => Trend, (trend) => trend.views)
   @JoinColumn({ name: "trendId" })
-  trend: Trend;
+  trend: string;
+
+  @ManyToOne(() => User, (user) => user.id)
+  @JoinColumn({ name: "userId" })
+  author: string;
 
   @Field()
   @CreateDateColumn()

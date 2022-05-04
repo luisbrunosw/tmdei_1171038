@@ -10,6 +10,7 @@ import {
 import { Field, ID, ObjectType } from "type-graphql";
 import { Comment } from "./Comment";
 import { Post } from "./Post";
+import { View } from "./View";
 
 @ObjectType()
 @Entity("users")
@@ -29,6 +30,10 @@ export class User extends BaseEntity {
   @Field(() => [Post], {nullable: "items"})
   @OneToMany(() => Post, (post) => post.author)
   posts: Post[];
+
+  @Field(() => [View], {nullable: "items"})
+  @OneToMany(() => View, (view) => view.author)
+  views: View[];
 
   @Field()
   @CreateDateColumn()

@@ -3,6 +3,7 @@ import { Arg, FieldResolver, Mutation, Query, Resolver, Root } from "type-graphq
 import { Post } from "../../entity/Post";
 import { Comment } from "../../entity/Comment";
 import { User } from "../../entity/User";
+import { View } from "../../entity/View";
 import { CreateUserInput } from "./createUserInput";
 import { CreateUserResponse } from "./CreateUserResponse";
 
@@ -21,6 +22,11 @@ export class UserResolver {
   @FieldResolver(() => [Post])
   async posts(@Root() user: User): Promise<Post[]> {
     return await Post.find({ where: {author: user.id}, order: { createdAt: "DESC" } })
+  }
+
+  @FieldResolver(() => [View])
+  async views(@Root() user: User): Promise<View[]> {
+    return await View.find({ where: {author: user.id}, order: { createdAt: "DESC" } })
   }
 
   @Query(() => User)
