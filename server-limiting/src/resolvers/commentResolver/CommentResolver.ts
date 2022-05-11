@@ -1,21 +1,22 @@
-import { Arg, FieldResolver, Int, Mutation, Query, Resolver, Root } from "type-graphql";
+import { Arg, FieldResolver, Mutation, Query, Resolver, Root } from "type-graphql";
 
 import { Comment } from "../../domain/Comment";
 import { User } from "../../domain/User";
 import { Post } from "../../domain/Post";
 import { CreateCommentInput } from "./CreateCommentInput";
 import { CreateCommentResponse } from "./CreateCommentResponse";
+import { ListFilter } from "../../utils/Utils";
 
 @Resolver(() => Comment)
 export class CommentResolver {
   @Query(() => [Comment])
-  async comments(): Promise<Comment[]> {
-    return await Comment.find({ order: { createdAt: "DESC" } });
+  async comments(@Arg("filter") {first}: ListFilter): Promise<Comment[]> {
+    return await Comment.find({ take: first, order: { createdAt: "DESC" } });
   }
   
   @FieldResolver(() => [Comment])
-  async answers(@Root() comment: Comment): Promise<Comment[]> {
-    return await Comment.find({ where: {thread: comment.id}, order: { createdAt: "DESC" } })
+  async answers(@Root() comment: Comment, @Arg("filter") {first}: ListFilter): Promise<Comment[]> {
+    return await Comment.find({ take: first, where: {thread: comment.id}, order: { createdAt: "DESC" } })
   }
   
   @FieldResolver(() => Comment)

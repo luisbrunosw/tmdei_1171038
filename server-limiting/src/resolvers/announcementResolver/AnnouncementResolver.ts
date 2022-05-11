@@ -4,12 +4,13 @@ import { Announcement } from "../../domain/Announcement";
 import { User } from "../../domain/User";
 import { CreateAnnouncementInput } from "./createAnnouncementInput";
 import { CreateAnnouncementResponse } from "./createAnnouncementResponse";
+import { ListFilter } from "../../utils/Utils";
 
 @Resolver(() => Announcement)
 export class AnnouncementResolver {
   @Query(() => [Announcement])
-  async announcements(): Promise<Announcement[]> {
-    const anns = await Announcement.find();
+  async announcements(@Arg("filter") {first}: ListFilter): Promise<Announcement[]> {
+    const anns = await Announcement.find({ take: first });
     return anns;
   }
 

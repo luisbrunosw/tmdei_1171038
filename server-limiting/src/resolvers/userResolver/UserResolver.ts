@@ -8,37 +8,38 @@ import { Suggestion } from "../../domain/Suggestion";
 import { Announcement } from "../../domain/Announcement";
 import { CreateUserInput } from "./createUserInput";
 import { CreateUserResponse } from "./CreateUserResponse";
+import { ListFilter } from "../../utils/Utils";
 
 @Resolver(() => User)
 export class UserResolver {
   @Query(() => [User])
- async users(): Promise<User[]> {
-    return await User.find()
+ async users(@Arg("filter") {first}: ListFilter): Promise<User[]> {
+    return await User.find({take: first})
   }
 
   @FieldResolver(() => [Comment])
-  async comments(@Root() user: User): Promise<Comment[]> {
-    return await Comment.find({ where: {author: user.id}, order: { createdAt: "DESC" } })
+  async comments(@Root() user: User, @Arg("filter") {first}: ListFilter): Promise<Comment[]> {
+    return await Comment.find({ take: first, where: {author: user.id}, order: { createdAt: "DESC" } })
   }
 
   @FieldResolver(() => [Post])
-  async posts(@Root() user: User): Promise<Post[]> {
-    return await Post.find({ where: {author: user.id}, order: { createdAt: "DESC" } })
+  async posts(@Root() user: User, @Arg("filter") {first}: ListFilter): Promise<Post[]> {
+    return await Post.find({ take: first, where: {author: user.id}, order: { createdAt: "DESC" } })
   }
 
   @FieldResolver(() => [View])
-  async views(@Root() user: User): Promise<View[]> {
-    return await View.find({ where: {author: user.id}, order: { createdAt: "DESC" } })
+  async views(@Root() user: User, @Arg("filter") {first}: ListFilter): Promise<View[]> {
+    return await View.find({ take: first, where: {author: user.id}, order: { createdAt: "DESC" } })
   }
 
   @FieldResolver(() => [Announcement])
-  async announcements(@Root() user: User): Promise<Announcement[]> {
-    return await Announcement.find({ where: {author: user.id}, order: { createdAt: "DESC" } })
+  async announcements(@Root() user: User, @Arg("filter") {first}: ListFilter): Promise<Announcement[]> {
+    return await Announcement.find({ take: first, where: {author: user.id}, order: { createdAt: "DESC" } })
   }
 
   @FieldResolver(() => [Suggestion])
-  async suggestions(@Root() user: User): Promise<Suggestion[]> {
-    return await Suggestion.find({ where: {author: user.id}, order: { createdAt: "DESC" } })
+  async suggestions(@Root() user: User, @Arg("filter") {first}: ListFilter): Promise<Suggestion[]> {
+    return await Suggestion.find({ take: first, where: {author: user.id}, order: { createdAt: "DESC" } })
   }
 
   @Query(() => User)

@@ -49,8 +49,8 @@ export class TrendResolver {
   }
 
   @FieldResolver(() => number)
-  async views(@Root("trendId") id: string) {
-    return await View.count({ where: { trendId: id } });
+  async views(@Root() trend: Trend) {
+    return await View.find({ where: { trend: trend.id } });
   }
 
   @FieldResolver(() => [View])
