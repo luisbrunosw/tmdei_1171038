@@ -1,5 +1,5 @@
-import { formatQuery, ListFilter } from "../../utils/Utils";
-import { Arg, FieldResolver, Int, Mutation, Query, Resolver, Root } from "type-graphql";
+import ListFilter, { formatQuery } from "../../utils/Utils";
+import { Arg, FieldResolver, Mutation, Query, Resolver, Root } from "type-graphql";
 
 import { Trend } from "../../domain/Trend";
 import { View } from "../../domain/View";
@@ -23,7 +23,7 @@ export class TrendResolver {
     body
    });
 
-  return await Trend.find({...query, take: first});
+  return await Trend.find({...query, take: parseInt(first.toString())});
 }
 
   @Query(() => [Trend])
@@ -52,10 +52,5 @@ export class TrendResolver {
   @FieldResolver(() => number)
   async views(@Root() trend: Trend) {
     return await View.find({ where: { trend: trend.id } });
-  }
-
-  @FieldResolver(() => [View])
-  async comments(@Root() trend: Trend, @Arg("first", () => Int, {nullable: true}) first: number): Promise<View[]> {
-    return await View.find({ take: first, where: {trend: trend.id}, order: { createdAt: "DESC" } })
   }
 }

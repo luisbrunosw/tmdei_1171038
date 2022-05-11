@@ -4,13 +4,13 @@ import { Suggestion } from "../../domain/Suggestion";
 import { User } from "../../domain/User";
 import { CreateSuggestionInput } from "./createSuggestionInput";
 import { CreateSuggestionResponse } from "./createSuggestionResponse";
-import { ListFilter } from "../../utils/Utils";
+import ListFilter from "../../utils/Utils";
 
 @Resolver(() => Suggestion)
 export class Suggestionsolver {
   @Query(() => [Suggestion])
   async suggestions(@Arg("filter") {first}: ListFilter): Promise<Suggestion[]> {
-    const suggestions = await Suggestion.find({ take: first, order: { createdAt: "DESC" } });
+    const suggestions = await Suggestion.find({ take: parseInt(first.toString()), order: { createdAt: "DESC" } });
     return suggestions;
   }
 

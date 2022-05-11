@@ -52,9 +52,4 @@ export class TrendResolver {
   async views(@Root() trend: Trend) {
     return await View.find({ where: { trend: trend.id } });
   }
-
-  @FieldResolver(() => [View])
-  async comments(@Root() trend: Trend): Promise<View[]> {
-    return await View.find({ where: {trend: trend.id}, order: { createdAt: "DESC" } })
-  }
 }
