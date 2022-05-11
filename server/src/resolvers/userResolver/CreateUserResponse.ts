@@ -1,6 +1,6 @@
 import { Field, ObjectType } from "type-graphql";
 
-import { User } from "../../entity/User";
+import { User } from "../../domain/User";
 
 @ObjectType()
 export class CreateUserResponse {

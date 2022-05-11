@@ -1,7 +1,7 @@
 import { Arg, FieldResolver, Mutation, Query, Resolver, Root } from "type-graphql";
 
-import { Announcement } from "../../entity/Announcement";
-import { User } from "../../entity/User";
+import { Announcement } from "../../domain/Announcement";
+import { User } from "../../domain/User";
 import { CreateAnnouncementInput } from "./createAnnouncementInput";
 import { CreateAnnouncementResponse } from "./createAnnouncementResponse";
 

@@ -1,6 +1,6 @@
 import { Field, ObjectType } from "type-graphql";
 
-import { Trend } from "../../entity/Trend";
+import { Trend } from "../../domain/Trend";
 
 @ObjectType()
 export class CreateTrendResponse {

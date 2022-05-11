@@ -1,4 +1,3 @@
-
 export const removeNullKeys= (obj: any) => {
     Object.keys(obj).forEach(key => {
     if (!obj[key]) {

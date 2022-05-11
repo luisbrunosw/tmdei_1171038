@@ -27,7 +27,7 @@ const main = async () => {
     password: process.env.DB_PASSWORD,
     logging: !__prod__,
     synchronize: true,
-    entities: [join(__dirname, "./entity/**/*.*")],
+    entities: [join(__dirname, "./domain/**/*.*")],
   });
 
   const app = express();

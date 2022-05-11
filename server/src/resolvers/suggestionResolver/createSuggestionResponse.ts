@@ -1,6 +1,6 @@
 import { Field, ObjectType } from "type-graphql";
 
-import { Suggestion } from "../../entity/Suggestion";
+import { Suggestion } from "../../domain/Suggestion";
 
 @ObjectType()
 export class CreateSuggestionResponse {

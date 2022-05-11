@@ -1,7 +1,7 @@
 import { Arg, FieldResolver, Mutation, Query, Resolver, Root } from "type-graphql";
 
-import { Suggestion } from "../../entity/Suggestion";
-import { User } from "../../entity/User";
+import { Suggestion } from "../../domain/Suggestion";
+import { User } from "../../domain/User";
 import { CreateSuggestionInput } from "./createSuggestionInput";
 import { CreateSuggestionResponse } from "./createSuggestionResponse";
 

@@ -1,6 +1,6 @@
 import { Field, ObjectType } from "type-graphql";
 
-import { Announcement } from "../../entity/Announcement";
+import { Announcement } from "../../domain/Announcement";
 
 @ObjectType()
 export class CreateAnnouncementResponse {

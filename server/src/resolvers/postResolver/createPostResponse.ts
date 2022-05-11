@@ -1,6 +1,6 @@
 import { Field, ObjectType } from "type-graphql";
 
-import { Post } from "../../entity/Post";
+import { Post } from "../../domain/Post";
 
 @ObjectType()
 export class CreatePostResponse {

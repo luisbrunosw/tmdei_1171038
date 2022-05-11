@@ -1,8 +1,8 @@
 import { Arg, FieldResolver, Mutation, Query, Resolver, Root } from "type-graphql";
 
-import { Post } from "../../entity/Post";
-import { Comment } from "../../entity/Comment";
-import { User } from "../../entity/User";
+import { Post } from "../../domain/Post";
+import { Comment } from "../../domain/Comment";
+import { User } from "../../domain/User";
 import { CreatePostInput } from "./createPostInput";
 import { CreatePostResponse } from "./createPostResponse";
 

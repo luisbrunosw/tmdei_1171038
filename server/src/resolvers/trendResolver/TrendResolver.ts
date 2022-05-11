@@ -1,8 +1,8 @@
 import { formatQuery } from "../../utils/Utils";
 import { Arg, FieldResolver, Mutation, Query, Resolver, Root } from "type-graphql";
 
-import { Trend } from "../../entity/Trend";
-import { View } from "../../entity/View";
+import { Trend } from "../../domain/Trend";
+import { View } from "../../domain/View";
 import { CreateTrendResponse } from "./createTrendResponse";
 import { CreateTrendInput } from "./createTrendInput";
 import { TrendFilter } from "./TrendFilter";

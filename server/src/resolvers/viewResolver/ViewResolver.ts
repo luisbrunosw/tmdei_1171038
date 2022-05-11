@@ -1,8 +1,8 @@
 import { Arg, FieldResolver, Mutation, Query, Resolver, Root } from "type-graphql";
 
-import { View } from "../../entity/View";
-import { Trend } from "../../entity/Trend";
-import { User } from "../../entity/User";
+import { View } from "../../domain/View";
+import { Trend } from "../../domain/Trend";
+import { User } from "../../domain/User";
 import { CreateViewInput } from "./CreateViewInput";
 import { CreateViewResponse } from "./CreateViewResponse";
 
