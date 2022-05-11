@@ -7,6 +7,7 @@ import { Trending } from "./pages/Trending";
 import { Tips } from "./pages/Tips";
 import { Messages } from "./pages/Messages";
 import { About } from "./pages/About";
+import Post from "./pages/Posts";
 
 function App() {
   return (
@@ -14,6 +15,7 @@ function App() {
       <Navbar />
       <Switch>
         <Route exact component={Home} path="/" />
+        <Route exact component={Post} path="/post/:id" />
         <Route exact component={Trending} path="/trending" />
         <Route exact component={Tips} path="/tips" />
         <Route exact component={Messages} path="/messages" />

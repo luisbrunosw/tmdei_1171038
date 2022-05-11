@@ -4,7 +4,7 @@ import { Modal } from "@mui/material";
 import { EmojiObjects } from "@mui/icons-material";
 
 import "../styles/Tips.css";
-import { useSuggestionsQuery } from "../generated/graphql";
+import { useSuggestionsQuery } from "../graphql/graphql";
 import { CreateTipModal } from "../components/tips/CreateTipModal";
 
 export const Tips: React.FC = () => {

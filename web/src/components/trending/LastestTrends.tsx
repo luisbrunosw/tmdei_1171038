@@ -4,7 +4,7 @@ import React from "react";
 import {
   useCreateViewMutation,
   useNewTrendsQuery,
-} from "../../generated/graphql";
+} from "../../graphql/graphql";
 import { ViewCount } from "../ViewCount";
 
 export const LatestTrends: React.FC = () => {

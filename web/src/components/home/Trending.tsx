@@ -2,7 +2,7 @@ import { Avatar } from "@mui/material";
 import React from "react";
 
 import { ViewCount } from "../ViewCount";
-import { useNewTrendsQuery } from "../../generated/graphql";
+import { useNewTrendsQuery } from "../../graphql/graphql";
 
 export const Trending: React.FC = () => {
   const { data, loading } = useNewTrendsQuery();

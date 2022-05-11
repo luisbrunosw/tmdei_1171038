@@ -1,7 +1,7 @@
 import { EmojiObjects } from "@mui/icons-material";
 import React from "react";
 
-import { useNewSuggestionsQuery } from "../../generated/graphql";
+import { useNewSuggestionsQuery } from "../../graphql/graphql";
 
 export const Suggestions: React.FC = () => {
   const { data, loading, error } = useNewSuggestionsQuery();

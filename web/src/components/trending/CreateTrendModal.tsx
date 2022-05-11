@@ -1,6 +1,6 @@
 import React from "react";
 import { Close } from "@mui/icons-material";
-import { CreateTrendComponent } from "../../generated/graphql";
+import { CreateTrendComponent } from "../../graphql/graphql";
 import { Form, Formik } from "formik";
 import { Button, TextField } from "@mui/material";
 

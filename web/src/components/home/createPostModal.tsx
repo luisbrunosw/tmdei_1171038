@@ -3,7 +3,7 @@ import { Close } from "@mui/icons-material";
 import { Form, Formik } from "formik";
 import { Button, TextField } from "@mui/material";
 
-import { CreatePostComponent } from "../../generated/graphql";
+import { CreatePostComponent } from "../../graphql/graphql";
 
 interface Props {
   onClose: () => void;

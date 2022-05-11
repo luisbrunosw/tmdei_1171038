@@ -1,6 +1,6 @@
 import React from "react";
 
-import { useViewsQuery } from "../generated/graphql";
+import { useViewsQuery } from "../graphql/graphql";
 
 interface Props {
   trendId: string;

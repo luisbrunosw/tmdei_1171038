@@ -2,7 +2,7 @@ import React from "react";
 import dayjs from "dayjs";
 import { Avatar } from "@mui/material";
 
-import { useCreateViewMutation, useTrendsQuery } from "../../generated/graphql";
+import { useCreateViewMutation, useTrendsQuery } from "../../graphql/graphql";
 import { ViewCount } from "../ViewCount";
 
 const AllTrends: React.FC = () => {

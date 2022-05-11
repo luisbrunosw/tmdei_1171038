@@ -2,18 +2,18 @@ import React from "react";
 import dayjs from "dayjs";
 import { Avatar } from "@mui/material";
 
-import { Post } from "../../graphql/graphql";
+import { Post } from "../../generated/graphql";
 import { useHistory } from "react-router";
 
 interface Props {
-  posts: Post[] | undefined;
+  post: Post | undefined;
 }
 
-export const Posts: React.FC<Props> = ({ posts }) => {
+export const PostDetail: React.FC<Props> = ({ post }) => {
   const history = useHistory();
   return (
     <div className="homepage__posts">
-      {posts!.map((post) => (
+        {post &&
         <div key={post.id} className="homepage__postCard" onClick={() => history.push("/post/"+post.id)}>
           <div className="homepage__postCard__header">
             <Avatar className="postCard__avatar">
@@ -32,8 +32,7 @@ export const Posts: React.FC<Props> = ({ posts }) => {
             </header>
             <div>{post.body}</div>
           </div>
-        </div>
-      ))}
+        </div>}
     </div>
   );
 };

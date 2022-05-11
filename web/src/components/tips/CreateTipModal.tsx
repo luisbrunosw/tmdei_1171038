@@ -2,7 +2,7 @@ import { Close } from "@mui/icons-material";
 import { Button, TextField } from "@mui/material";
 import { Form, Formik } from "formik";
 import React from "react";
-import { CreateSuggestionComponent } from "../../generated/graphql";
+import { CreateSuggestionComponent } from "../../graphql/graphql";
 
 interface Props {
   onClose: () => void;

@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 
 import "../styles/Home.css";
-import { usePostsQuery } from "../generated/graphql";
+import { usePostsQuery } from "../graphql/graphql";
 import { Posts } from "../components/home/Posts";
 import { Suggestions } from "../components/home/Suggestions";
 import { Trending } from "../components/home/Trending";
