@@ -17,6 +17,7 @@ import { Suggestionsolver } from "./resolvers/suggestionResolver/SuggestionResol
 import { HelloResolver } from "./resolvers/hello";
 import { TrendResolver } from "./resolvers/trendResolver/TrendResolver";
 import { ViewResolver } from "./resolvers/viewResolver/ViewResolver";
+import depthLimit from "graphql-depth-limit";
 
 const main = async () => {
   await createConnection({
@@ -53,6 +54,7 @@ const main = async () => {
       ],
       validate: false,
     }),
+    validationRules: [ depthLimit(10) ],
     plugins: [ApolloServerPluginLandingPageGraphQLPlayground()],
     context: ({ req, res }: any) => ({ req, res }),
     introspection: true,
