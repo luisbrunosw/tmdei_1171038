@@ -7,6 +7,7 @@ import { join } from "path";
 import { buildSchema } from "type-graphql";
 import { ApolloServer } from "apollo-server-express";
 import cors from "cors";
+import { createComplexityLimitRule } from 'graphql-validation-complexity';
 
 import { __prod__ } from "./constants";
 import { PostResolver } from "./resolvers/postResolver/PostResolver";
@@ -53,6 +54,7 @@ const main = async () => {
       ],
       validate: false,
     }),
+    validationRules: [createComplexityLimitRule(1000)],
     plugins: [ApolloServerPluginLandingPageGraphQLPlayground()],
     context: ({ req, res }: any) => ({ req, res }),
     introspection: true,

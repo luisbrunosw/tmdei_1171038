@@ -1,4 +1,4 @@
-import { Arg, FieldResolver, Int, Mutation, Query, Resolver, Root } from "type-graphql";
+import { Arg, FieldResolver, Mutation, Query, Resolver, Root } from "type-graphql";
 
 import { Comment } from "../../domain/Comment";
 import { User } from "../../domain/User";
