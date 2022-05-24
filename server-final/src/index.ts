@@ -7,6 +7,7 @@ import { join } from "path";
 import { buildSchema } from "type-graphql";
 import { ApolloServer } from "apollo-server-express";
 import cors from "cors";
+import { createComplexityLimitRule } from 'graphql-validation-complexity';
 
 import { __prod__ } from "./constants";
 import { PostResolver } from "./resolvers/postResolver/PostResolver";
@@ -54,7 +55,20 @@ const main = async () => {
       ],
       validate: false,
     }),
-    validationRules: [ depthLimit(5) ],
+    validationRules: [ 
+      depthLimit(5),
+      createComplexityLimitRule(10000, {
+        scalarCost: 1,
+        objectCost: 5,
+        listFactor: 10,
+        formatErrorMessage: (cost) =>{
+          return `Query exceeds complexity limit. Calculated Cost: ${cost}`
+        },
+        onCost: (cost) =>{
+          console.log(`Calculated Cost: ${cost}`)
+        }
+      })
+     ],
     plugins: [ApolloServerPluginLandingPageGraphQLPlayground()],
     context: ({ req, res }: any) => ({ req, res }),
     introspection: true,

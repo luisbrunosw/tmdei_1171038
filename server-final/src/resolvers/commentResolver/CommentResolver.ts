@@ -5,17 +5,18 @@ import { User } from "../../domain/User";
 import { Post } from "../../domain/Post";
 import { CreateCommentInput } from "./CreateCommentInput";
 import { CreateCommentResponse } from "./CreateCommentResponse";
+import ListFilter from "../../utils/Utils";
 
 @Resolver(() => Comment)
 export class CommentResolver {
   @Query(() => [Comment])
-  async comments(): Promise<Comment[]> {
-    return await Comment.find({ order: { createdAt: "DESC" } });
+  async comments(@Arg("filter") {first}: ListFilter): Promise<Comment[]> {
+    return await Comment.find({ take: parseInt(first.toString()), order: { createdAt: "DESC" } });
   }
   
   @FieldResolver(() => [Comment])
-  async answers(@Root() comment: Comment): Promise<Comment[]> {
-    return await Comment.find({ where: {thread: comment.id}, order: { createdAt: "DESC" } })
+  async answers(@Root() comment: Comment, @Arg("filter") {first}: ListFilter): Promise<Comment[]> {
+    return await Comment.find({ take: parseInt(first.toString()), where: {thread: comment.id}, order: { createdAt: "DESC" } })
   }
   
   @FieldResolver(() => Comment)

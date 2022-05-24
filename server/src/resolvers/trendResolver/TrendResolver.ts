@@ -13,8 +13,9 @@ export class TrendResolver {
   @Query(() => [Trend])
   async trends(
     @Arg("input", { nullable: true }) 
-    {source, sourceUrl, imageUrl, body}: TrendFilter
+    input: TrendFilter
   ): Promise<Trend[]> {
+  const {source, sourceUrl, imageUrl, body} = Object(input);
   const query = formatQuery({
     source,
     sourceUrl,

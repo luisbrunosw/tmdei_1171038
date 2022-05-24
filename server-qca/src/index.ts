@@ -54,7 +54,19 @@ const main = async () => {
       ],
       validate: false,
     }),
-    validationRules: [createComplexityLimitRule(1000)],
+    validationRules: [
+      createComplexityLimitRule(10000, {
+        scalarCost: 1,
+        objectCost: 5,
+        listFactor: 10,
+        formatErrorMessage: (cost) =>{
+          return `Query exceeds complexity limit. Calculated Cost: ${cost}`
+        },
+        onCost: (cost) =>{
+          console.log(`Calculated Cost: ${cost}`)
+        }
+      })
+    ],
     plugins: [ApolloServerPluginLandingPageGraphQLPlayground()],
     context: ({ req, res }: any) => ({ req, res }),
     introspection: true,
