@@ -57,7 +57,7 @@ const main = async () => {
     }),
     validationRules: [ 
       depthLimit(5),
-      createComplexityLimitRule(10000, {
+      createComplexityLimitRule(20000, {
         scalarCost: 1,
         objectCost: 5,
         listFactor: 10,

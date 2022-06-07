@@ -1,0 +1,29 @@
+query users {
+    users {
+        id
+        name
+        comments {
+            title
+            body
+        }
+        posts {
+            title
+            body
+            comments {
+                title
+                body
+                author {
+                    name
+                }
+            }
+        }
+        announcements {
+            body
+            summary
+        }
+        suggestions {
+            body
+            tag
+        }
+    }
+}

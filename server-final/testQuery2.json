@@ -1,0 +1,29 @@
+query users ($filter: ListFilter!) {
+    users (filter: $filter) {
+        id
+        name
+        comments (filter: $filter) {
+            title
+            body
+        }
+        posts (filter: $filter) {
+            title
+            body
+            comments (filter: $filter) {
+                title
+                body
+                author {
+                    name
+                }
+            }
+        }
+        announcements (filter: $filter) {
+            body
+            summary
+        }
+        suggestions (filter: $filter) {
+            body
+            tag
+        }
+    }
+}
