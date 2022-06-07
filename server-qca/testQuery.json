@@ -1,0 +1,1022 @@
+query users {
+    users {
+        id
+        name
+        comments {
+            id
+            title
+            body
+            answers {
+                id
+                title
+                body
+                answers ) {
+                    id
+                    title
+                    body
+                    createdAt
+                    updatedAt
+                    thread {
+                        id
+                        title
+                        body
+                        createdAt
+                        updatedAt
+                    }
+                    author {
+                        id
+                        name
+                        createdAt
+                        updatedAt
+                    }
+                    post {
+                        id
+                        title
+                        body
+                        createdAt
+                        updatedAt
+                    }
+                }
+                createdAt
+                updatedAt
+                thread {
+                    id
+                    title
+                    body
+                    answers {
+                        id
+                        title
+                        body
+                        createdAt
+                        updatedAt
+                    }
+                    createdAt
+                    updatedAt
+                    thread {
+                        id
+                        title
+                        body
+                        createdAt
+                        updatedAt
+                    }
+                    author {
+                        id
+                        name
+                        createdAt
+                        updatedAt
+                    }
+                    post {
+                        id
+                        title
+                        body
+                        createdAt
+                        updatedAt
+                    }
+                }
+                author {
+                    id
+                    name
+                    comments {
+                        id
+                        title
+                        body
+                        createdAt
+                        updatedAt
+                    }
+                    posts {
+                        id
+                        title
+                        body
+                        createdAt
+                        updatedAt
+                    }
+                    views {
+                        id
+                        createdAt
+                        updatedAt
+                    }
+                    announcements {
+                        id
+                        body
+                        summary
+                        createdAt
+                        updatedAt
+                    }
+                    suggestions {
+                        id
+                        body
+                        tag
+                        createdAt
+                        updatedAt
+                    }
+                    createdAt
+                    updatedAt
+                }
+                post {
+                    id
+                    title
+                    body
+                    comments {
+                        id
+                        title
+                        body
+                        createdAt
+                        updatedAt
+                    }
+                    createdAt
+                    updatedAt
+                    author {
+                        id
+                        name
+                        createdAt
+                        updatedAt
+                    }
+                }
+            }
+            createdAt
+            updatedAt
+            thread {
+                id
+                title
+                body
+                answers {
+                    id
+                    title
+                    body
+                    answers {
+                        id
+                        title
+                        body
+                        createdAt
+                        updatedAt
+                    }
+                    createdAt
+                    updatedAt
+                    thread {
+                        id
+                        title
+                        body
+                        createdAt
+                        updatedAt
+                    }
+                    author {
+                        id
+                        name
+                        createdAt
+                        updatedAt
+                    }
+                    post {
+                        id
+                        title
+                        body
+                        createdAt
+                        updatedAt
+                    }
+                }
+                createdAt
+                updatedAt
+                thread {
+                    id
+                    title
+                    body
+                    answers {
+                        id
+                        title
+                        body
+                        createdAt
+                        updatedAt
+                    }
+                    createdAt
+                    updatedAt
+                    author {
+                        id
+                        name
+                        createdAt
+                        updatedAt
+                    }
+                    post {
+                        id
+                        title
+                        body
+                        createdAt
+                        updatedAt
+                    }
+                }
+                author {
+                    id
+                    name
+                    comments {
+                        id
+                        title
+                        body
+                        createdAt
+                        updatedAt
+                    }
+                    posts {
+                        id
+                        title
+                        body
+                        createdAt
+                        updatedAt
+                    }
+                    views {
+                        id
+                        createdAt
+                        updatedAt
+                    }
+                    announcements {
+                        id
+                        body
+                        summary
+                        createdAt
+                        updatedAt
+                    }
+                    suggestions {
+                        id
+                        body
+                        tag
+                        createdAt
+                        updatedAt
+                    }
+                    createdAt
+                    updatedAt
+                }
+                post {
+                    id
+                    title
+                    body
+                    comments {
+                        id
+                        title
+                        body
+                        createdAt
+                        updatedAt
+                    }
+                    createdAt
+                    updatedAt
+                    author {
+                        id
+                        name
+                        createdAt
+                        updatedAt
+                    }
+                }
+            }
+            author {
+                id
+                name
+                comments {
+                    id
+                    title
+                    body
+                    answers {
+                        id
+                        title
+                        body
+                        createdAt
+                        updatedAt
+                    }
+                    createdAt
+                    updatedAt
+                    thread {
+                        id
+                        title
+                        body
+                        createdAt
+                        updatedAt
+                    }
+                    post {
+                        id
+                        title
+                        body
+                        createdAt
+                        updatedAt
+                    }
+                }
+                posts {
+                    id
+                    title
+                    body
+                    comments {
+                        id
+                        title
+                        body
+                        createdAt
+                        updatedAt
+                    }
+                    createdAt
+                    updatedAt
+                    author {
+                        id
+                        name
+                        createdAt
+                        updatedAt
+                    }
+                }
+                views {
+                    id
+                    createdAt
+                    updatedAt
+                    author {
+                        id
+                        name
+                        createdAt
+                        updatedAt
+                    }
+                    trend {
+                        id
+                        source
+                        sourceUrl
+                        imageUrl
+                        body
+                        createdAt
+                        updatedAt
+                    }
+                }
+                announcements {
+                    id
+                    body
+                    summary
+                    createdAt
+                    updatedAt
+                    author {
+                        id
+                        name
+                        createdAt
+                        updatedAt
+                    }
+                }
+                suggestions {
+                    id
+                    body
+                    tag
+                    createdAt
+                    updatedAt
+                    author {
+                        id
+                        name
+                        createdAt
+                        updatedAt
+                    }
+                }
+                createdAt
+                updatedAt
+            }
+            post {
+                id
+                title
+                body
+                comments {
+                    id
+                    title
+                    body
+                    answers {
+                        id
+                        title
+                        body
+                        createdAt
+                        updatedAt
+                    }
+                    createdAt
+                    updatedAt
+                    thread {
+                        id
+                        title
+                        body
+                        createdAt
+                        updatedAt
+                    }
+                    author {
+                        id
+                        name
+                        createdAt
+                        updatedAt
+                    }
+                }
+                createdAt
+                updatedAt
+                author {
+                    id
+                    name
+                    comments {
+                        id
+                        title
+                        body
+                        createdAt
+                        updatedAt
+                    }
+                    posts {
+                        id
+                        title
+                        body
+                        createdAt
+                        updatedAt
+                    }
+                    views {
+                        id
+                        createdAt
+                        updatedAt
+                    }
+                    announcements {
+                        id
+                        body
+                        summary
+                        createdAt
+                        updatedAt
+                    }
+                    suggestions {
+                        id
+                        body
+                        tag
+                        createdAt
+                        updatedAt
+                    }
+                    createdAt
+                    updatedAt
+                }
+            }
+        }
+        posts {
+            id
+            title
+            body
+            comments {
+                id
+                title
+                body
+                answers {
+                    id
+                    title
+                    body
+                    answers {
+                        id
+                        title
+                        body
+                        createdAt
+                        updatedAt
+                    }
+                    createdAt
+                    updatedAt
+                    thread {
+                        id
+                        title
+                        body
+                        createdAt
+                        updatedAt
+                    }
+                    author {
+                        id
+                        name
+                        createdAt
+                        updatedAt
+                    }
+                    post {
+                        id
+                        title
+                        body
+                        createdAt
+                        updatedAt
+                    }
+                }
+                createdAt
+                updatedAt
+                thread {
+                    id
+                    title
+                    body
+                    answers {
+                        id
+                        title
+                        body
+                        createdAt
+                        updatedAt
+                    }
+                    createdAt
+                    updatedAt
+                    thread {
+                        id
+                        title
+                        body
+                        createdAt
+                        updatedAt
+                    }
+                    author {
+                        id
+                        name
+                        createdAt
+                        updatedAt
+                    }
+                    post {
+                        id
+                        title
+                        body
+                        createdAt
+                        updatedAt
+                    }
+                }
+                author {
+                    id
+                    name
+                    comments {
+                        id
+                        title
+                        body
+                        createdAt
+                        updatedAt
+                    }
+                    posts {
+                        id
+                        title
+                        body
+                        createdAt
+                        updatedAt
+                    }
+                    views {
+                        id
+                        createdAt
+                        updatedAt
+                    }
+                    announcements {
+                        id
+                        body
+                        summary
+                        createdAt
+                        updatedAt
+                    }
+                    suggestions {
+                        id
+                        body
+                        tag
+                        createdAt
+                        updatedAt
+                    }
+                    createdAt
+                    updatedAt
+                }
+                post {
+                    id
+                    title
+                    body
+                    comments {
+                        id
+                        title
+                        body
+                        createdAt
+                        updatedAt
+                    }
+                    createdAt
+                    updatedAt
+                    author {
+                        id
+                        name
+                        createdAt
+                        updatedAt
+                    }
+                }
+            }
+            createdAt
+            updatedAt
+            author {
+                id
+                name
+                comments {
+                    id
+                    title
+                    body
+                    answers {
+                        id
+                        title
+                        body
+                        createdAt
+                        updatedAt
+                    }
+                    createdAt
+                    updatedAt
+                    thread {
+                        id
+                        title
+                        body
+                        createdAt
+                        updatedAt
+                    }
+                    author {
+                        id
+                        name
+                        createdAt
+                        updatedAt
+                    }
+                    post {
+                        id
+                        title
+                        body
+                        createdAt
+                        updatedAt
+                    }
+                }
+                posts {
+                    id
+                    title
+                    body
+                    comments {
+                        id
+                        title
+                        body
+                        createdAt
+                        updatedAt
+                    }
+                    createdAt
+                    updatedAt
+                }
+                views {
+                    id
+                    createdAt
+                    updatedAt
+                    author {
+                        id
+                        name
+                        createdAt
+                        updatedAt
+                    }
+                    trend {
+                        id
+                        source
+                        sourceUrl
+                        imageUrl
+                        body
+                        createdAt
+                        updatedAt
+                    }
+                }
+                announcements {
+                    id
+                    body
+                    summary
+                    createdAt
+                    updatedAt
+                    author {
+                        id
+                        name
+                        createdAt
+                        updatedAt
+                    }
+                }
+                suggestions {
+                    id
+                    body
+                    tag
+                    createdAt
+                    updatedAt
+                    author {
+                        id
+                        name
+                        createdAt
+                        updatedAt
+                    }
+                }
+                createdAt
+                updatedAt
+            }
+        }
+        views {
+            id
+            createdAt
+            updatedAt
+            author {
+                id
+                name
+                comments {
+                    id
+                    title
+                    body
+                    answers {
+                        id
+                        title
+                        body
+                        createdAt
+                        updatedAt
+                    }
+                    createdAt
+                    updatedAt
+                    thread {
+                        id
+                        title
+                        body
+                        createdAt
+                        updatedAt
+                    }
+                    author {
+                        id
+                        name
+                        createdAt
+                        updatedAt
+                    }
+                    post {
+                        id
+                        title
+                        body
+                        createdAt
+                        updatedAt
+                    }
+                }
+                posts {
+                    id
+                    title
+                    body
+                    comments {
+                        id
+                        title
+                        body
+                        createdAt
+                        updatedAt
+                    }
+                    createdAt
+                    updatedAt
+                    author {
+                        id
+                        name
+                        createdAt
+                        updatedAt
+                    }
+                }
+                views {
+                    id
+                    createdAt
+                    updatedAt
+                    trend {
+                        id
+                        source
+                        sourceUrl
+                        imageUrl
+                        body
+                        createdAt
+                        updatedAt
+                    }
+                }
+                announcements {
+                    id
+                    body
+                    summary
+                    createdAt
+                    updatedAt
+                    author {
+                        id
+                        name
+                        createdAt
+                        updatedAt
+                    }
+                }
+                suggestions {
+                    id
+                    body
+                    tag
+                    createdAt
+                    updatedAt
+                    author {
+                        id
+                        name
+                        createdAt
+                        updatedAt
+                    }
+                }
+                createdAt
+                updatedAt
+            }
+            trend {
+                id
+                source
+                sourceUrl
+                imageUrl
+                views {
+                    id
+                    createdAt
+                    updatedAt
+                    author {
+                        id
+                        name
+                        createdAt
+                        updatedAt
+                    }
+                }
+                body
+                createdAt
+                updatedAt
+            }
+        }
+        announcements {
+            id
+            body
+            summary
+            createdAt
+            updatedAt
+            author {
+                id
+                name
+                comments {
+                    id
+                    title
+                    body
+                    answers {
+                        id
+                        title
+                        body
+                        createdAt
+                        updatedAt
+                    }
+                    createdAt
+                    updatedAt
+                    thread {
+                        id
+                        title
+                        body
+                        createdAt
+                        updatedAt
+                    }
+                    author {
+                        id
+                        name
+                        createdAt
+                        updatedAt
+                    }
+                    post {
+                        id
+                        title
+                        body
+                        createdAt
+                        updatedAt
+                    }
+                }
+                posts {
+                    id
+                    title
+                    body
+                    comments {
+                        id
+                        title
+                        body
+                        createdAt
+                        updatedAt
+                    }
+                    createdAt
+                    updatedAt
+                    author {
+                        id
+                        name
+                        createdAt
+                        updatedAt
+                    }
+                }
+                views {
+                    id
+                    createdAt
+                    updatedAt
+                    author {
+                        id
+                        name
+                        createdAt
+                        updatedAt
+                    }
+                    trend {
+                        id
+                        source
+                        sourceUrl
+                        imageUrl
+                        body
+                        createdAt
+                        updatedAt
+                    }
+                }
+                announcements {
+                    id
+                    body
+                    summary
+                    createdAt
+                    updatedAt
+                }
+                suggestions {
+                    id
+                    body
+                    tag
+                    createdAt
+                    updatedAt
+                    author {
+                        id
+                        name
+                        createdAt
+                        updatedAt
+                    }
+                }
+                createdAt
+                updatedAt
+            }
+        }
+        suggestions {
+            id
+            body
+            tag
+            createdAt
+            updatedAt
+            author {
+                id
+                name
+                comments {
+                    id
+                    title
+                    body
+                    answers {
+                        id
+                        title
+                        body
+                        createdAt
+                        updatedAt
+                    }
+                    createdAt
+                    updatedAt
+                    thread {
+                        id
+                        title
+                        body
+                        createdAt
+                        updatedAt
+                    }
+                    author {
+                        id
+                        name
+                        createdAt
+                        updatedAt
+                    }
+                    post {
+                        id
+                        title
+                        body
+                        createdAt
+                        updatedAt
+                    }
+                }
+                posts {
+                    id
+                    title
+                    body
+                    comments {
+                        id
+                        title
+                        body
+                        createdAt
+                        updatedAt
+                    }
+                    createdAt
+                    updatedAt
+                    author {
+                        id
+                        name
+                        createdAt
+                        updatedAt
+                    }
+                }
+                views {
+                    id
+                    createdAt
+                    updatedAt
+                    author {
+                        id
+                        name
+                        createdAt
+                        updatedAt
+                    }
+                    trend {
+                        id
+                        source
+                        sourceUrl
+                        imageUrl
+                        body
+                        createdAt
+                        updatedAt
+                    }
+                }
+                announcements {
+                    id
+                    body
+                    summary
+                    createdAt
+                    updatedAt
+                    author {
+                        id
+                        name
+                        createdAt
+                        updatedAt
+                    }
+                }
+                suggestions {
+                    id
+                    body
+                    tag
+                    createdAt
+                    updatedAt
+                }
+                createdAt
+                updatedAt
+            }
+        }
+        createdAt
+        updatedAt
+    }
+}
